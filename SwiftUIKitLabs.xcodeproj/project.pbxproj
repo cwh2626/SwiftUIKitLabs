@@ -12,6 +12,8 @@
 		35A25ADA2BEBBC7600A29B54 /* StretchScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35A25AD82BEBBC7600A29B54 /* StretchScrollViewController.xib */; };
 		35A6C5182BEBC3A900D7211A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A6C5172BEBC3A900D7211A /* UIViewController+Extension.swift */; };
 		35A6C51B2BEBC45C00D7211A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A6C51A2BEBC45C00D7211A /* TestViewController.swift */; };
+		35A6C51F2BEBC6FE00D7211A /* ExpandableSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A6C51D2BEBC6FE00D7211A /* ExpandableSheetViewController.swift */; };
+		35A6C5202BEBC6FE00D7211A /* ExpandableSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35A6C51E2BEBC6FE00D7211A /* ExpandableSheetViewController.xib */; };
 		35E4EA8C2BE1426D003A10D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EA8B2BE1426D003A10D4 /* AppDelegate.swift */; };
 		35E4EA8E2BE1426D003A10D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EA8D2BE1426D003A10D4 /* SceneDelegate.swift */; };
 		35E4EA902BE1426D003A10D4 /* UIKitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EA8F2BE1426D003A10D4 /* UIKitTableViewController.swift */; };
@@ -46,6 +48,8 @@
 		35A25AD82BEBBC7600A29B54 /* StretchScrollViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StretchScrollViewController.xib; sourceTree = "<group>"; };
 		35A6C5172BEBC3A900D7211A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		35A6C51A2BEBC45C00D7211A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		35A6C51D2BEBC6FE00D7211A /* ExpandableSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableSheetViewController.swift; sourceTree = "<group>"; };
+		35A6C51E2BEBC6FE00D7211A /* ExpandableSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableSheetViewController.xib; sourceTree = "<group>"; };
 		35E4EA882BE1426D003A10D4 /* SwiftUIKitLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIKitLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E4EA8B2BE1426D003A10D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35E4EA8D2BE1426D003A10D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		35828F4D2BE2884D0030B11B /* Samples */ = {
 			isa = PBXGroup;
 			children = (
+				35A6C51C2BEBC6C700D7211A /* ExpandableSheet */,
 				35A6C5192BEBC44800D7211A /* TestVC */,
 				35828F4E2BE2897D0030B11B /* Stretch */,
 				35828F4B2BE2814E0030B11B /* Samples.swift */,
@@ -127,6 +132,23 @@
 				35A6C51A2BEBC45C00D7211A /* TestViewController.swift */,
 			);
 			path = TestVC;
+			sourceTree = "<group>";
+		};
+		35A6C51C2BEBC6C700D7211A /* ExpandableSheet */ = {
+			isa = PBXGroup;
+			children = (
+				35A6C5212BEBC83400D7211A /* Component */,
+				35A6C51D2BEBC6FE00D7211A /* ExpandableSheetViewController.swift */,
+				35A6C51E2BEBC6FE00D7211A /* ExpandableSheetViewController.xib */,
+			);
+			path = ExpandableSheet;
+			sourceTree = "<group>";
+		};
+		35A6C5212BEBC83400D7211A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		35E4EA7F2BE1426D003A10D4 = {
@@ -290,6 +312,7 @@
 				35E4EA952BE1426E003A10D4 /* Assets.xcassets in Resources */,
 				35A25ADA2BEBBC7600A29B54 /* StretchScrollViewController.xib in Resources */,
 				35E4EA932BE1426D003A10D4 /* Main.storyboard in Resources */,
+				35A6C5202BEBC6FE00D7211A /* ExpandableSheetViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +339,7 @@
 			files = (
 				35A6C51B2BEBC45C00D7211A /* TestViewController.swift in Sources */,
 				35A6C5182BEBC3A900D7211A /* UIViewController+Extension.swift in Sources */,
+				35A6C51F2BEBC6FE00D7211A /* ExpandableSheetViewController.swift in Sources */,
 				35A25AD92BEBBC7600A29B54 /* StretchScrollViewController.swift in Sources */,
 				35E4EA902BE1426D003A10D4 /* UIKitTableViewController.swift in Sources */,
 				35828F4C2BE2814E0030B11B /* Samples.swift in Sources */,
