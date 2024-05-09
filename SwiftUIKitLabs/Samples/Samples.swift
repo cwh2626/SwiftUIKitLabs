@@ -28,5 +28,8 @@ let sampleGroups: Array<SampleGroup> = [
                                                   title: "스트래치 스크롤"),
                                            Sample(controller: ExpandableSheetViewController(nibName: ExpandableSheetViewController.identifier, bundle: nil),
                                                                                        className: ExpandableSheetViewController.identifier,
-                                                                                       title: "확장 바텀 시트")])
+                                                                                       title: "확장 바텀 시트"),
+                                           Sample(controller: ExpandableSheetTwoViewController(nibName: ExpandableSheetTwoViewController.identifier, bundle: nil),
+                                                                                       className: ExpandableSheetTwoViewController.identifier,
+                                                                                       title: "확장 바텀 시트2")])
 ]

@@ -24,6 +24,8 @@
 		35E4EAAD2BE1426E003A10D4 /* SwiftUIKitLabsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EAAC2BE1426E003A10D4 /* SwiftUIKitLabsUITests.swift */; };
 		35E4EAAF2BE1426E003A10D4 /* SwiftUIKitLabsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EAAE2BE1426E003A10D4 /* SwiftUIKitLabsUITestsLaunchTests.swift */; };
 		B27A51F52BEC4E3A006BAE5F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B27A51F42BEC4E3A006BAE5F /* SnapKit */; };
+		B27A51F82BEC7539006BAE5F /* ExpandableSheetTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A51F62BEC7539006BAE5F /* ExpandableSheetTwoViewController.swift */; };
+		B27A51F92BEC7539006BAE5F /* ExpandableSheetTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A51F72BEC7539006BAE5F /* ExpandableSheetTwoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		35E4EAA82BE1426E003A10D4 /* SwiftUIKitLabsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIKitLabsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E4EAAC2BE1426E003A10D4 /* SwiftUIKitLabsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKitLabsUITests.swift; sourceTree = "<group>"; };
 		35E4EAAE2BE1426E003A10D4 /* SwiftUIKitLabsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKitLabsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B27A51F62BEC7539006BAE5F /* ExpandableSheetTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableSheetTwoViewController.swift; sourceTree = "<group>"; };
+		B27A51F72BEC7539006BAE5F /* ExpandableSheetTwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableSheetTwoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 				35A6C5212BEBC83400D7211A /* Component */,
 				35A6C51D2BEBC6FE00D7211A /* ExpandableSheetViewController.swift */,
 				35A6C51E2BEBC6FE00D7211A /* ExpandableSheetViewController.xib */,
+				B27A51F62BEC7539006BAE5F /* ExpandableSheetTwoViewController.swift */,
+				B27A51F72BEC7539006BAE5F /* ExpandableSheetTwoViewController.xib */,
 			);
 			path = ExpandableSheet;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E4EA982BE1426E003A10D4 /* LaunchScreen.storyboard in Resources */,
+				B27A51F92BEC7539006BAE5F /* ExpandableSheetTwoViewController.xib in Resources */,
 				35E4EA952BE1426E003A10D4 /* Assets.xcassets in Resources */,
 				35A25ADA2BEBBC7600A29B54 /* StretchScrollViewController.xib in Resources */,
 				35E4EA932BE1426D003A10D4 /* Main.storyboard in Resources */,
@@ -349,6 +356,7 @@
 				35A6C5182BEBC3A900D7211A /* UIViewController+Extension.swift in Sources */,
 				35A6C51F2BEBC6FE00D7211A /* ExpandableSheetViewController.swift in Sources */,
 				35A25AD92BEBBC7600A29B54 /* StretchScrollViewController.swift in Sources */,
+				B27A51F82BEC7539006BAE5F /* ExpandableSheetTwoViewController.swift in Sources */,
 				35E4EA902BE1426D003A10D4 /* UIKitTableViewController.swift in Sources */,
 				35828F4C2BE2814E0030B11B /* Samples.swift in Sources */,
 				35E4EA8C2BE1426D003A10D4 /* AppDelegate.swift in Sources */,
