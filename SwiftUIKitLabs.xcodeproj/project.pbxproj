@@ -23,6 +23,7 @@
 		35E4EAA32BE1426E003A10D4 /* SwiftUIKitLabsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EAA22BE1426E003A10D4 /* SwiftUIKitLabsTests.swift */; };
 		35E4EAAD2BE1426E003A10D4 /* SwiftUIKitLabsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EAAC2BE1426E003A10D4 /* SwiftUIKitLabsUITests.swift */; };
 		35E4EAAF2BE1426E003A10D4 /* SwiftUIKitLabsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EAAE2BE1426E003A10D4 /* SwiftUIKitLabsUITestsLaunchTests.swift */; };
+		B27A51F52BEC4E3A006BAE5F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B27A51F42BEC4E3A006BAE5F /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B27A51F52BEC4E3A006BAE5F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +222,9 @@
 			dependencies = (
 			);
 			name = SwiftUIKitLabs;
+			packageProductDependencies = (
+				B27A51F42BEC4E3A006BAE5F /* SnapKit */,
+			);
 			productName = SwiftUIKitLabs;
 			productReference = 35E4EA882BE1426D003A10D4 /* SwiftUIKitLabs.app */;
 			productType = "com.apple.product-type.application";
@@ -292,6 +297,9 @@
 				Base,
 			);
 			mainGroup = 35E4EA7F2BE1426D003A10D4;
+			packageReferences = (
+				B27A51F32BEC4E3A006BAE5F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 35E4EA892BE1426D003A10D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -534,6 +542,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,6 +571,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -691,6 +701,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B27A51F32BEC4E3A006BAE5F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B27A51F42BEC4E3A006BAE5F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B27A51F32BEC4E3A006BAE5F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35E4EA802BE1426D003A10D4 /* Project object */;
 }
