@@ -50,7 +50,7 @@ extension ExpandableSheetTwoViewController:
         if scrollView.contentOffset.y > 50 {
             UIView.animate(withDuration: 0.4,
                            delay: 0,
-                           usingSpringWithDamping: 0.6,  // 댐핑 비율, 낮을수록 더 많은 바운스
+                           usingSpringWithDamping: 1,  // 댐핑 비율, 낮을수록 더 많은 바운스
                            initialSpringVelocity: 0.2,  // 시작 속도, 높을수록 빠른 움직임
                            options: [.curveEaseIn],
                            animations: {
