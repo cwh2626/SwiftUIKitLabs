@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ExpandableSheetTwoViewController: UIViewController {
 
@@ -13,6 +14,23 @@ class ExpandableSheetTwoViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var rootContentView: UIView!
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = 8
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        collectionView.contentInset = contentInset
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        return collectionView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.dataSource = self
@@ -23,17 +41,24 @@ class ExpandableSheetTwoViewController: UIViewController {
         rootScrollView.decelerationRate = .fast
 
         headerView.backgroundColor = .clear
+        headerView.addSubview(collectionView)
         
         rootContentView.clipsToBounds = true
         rootContentView.layer.cornerRadius = 16
         rootContentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
 
 extension ExpandableSheetTwoViewController:
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout
 {
     // MARK: - UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -159,5 +184,22 @@ extension ExpandableSheetTwoViewController:
                 }, completion: nil)
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = . blue
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 60, height: collectionView.frame.size.height - 20)
+
     }
 }
