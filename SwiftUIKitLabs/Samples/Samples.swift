@@ -31,5 +31,9 @@ let sampleGroups: Array<SampleGroup> = [
                                                                                        title: "확장 바텀 시트"),
                                            Sample(controller: ExpandableSheetTwoViewController(nibName: ExpandableSheetTwoViewController.identifier, bundle: nil),
                                                                                        className: ExpandableSheetTwoViewController.identifier,
-                                                                                       title: "확장 바텀 시트2")])
+                                                                                       title: "확장 바텀 시트2"),
+                                           Sample(controller: TransformableSheetViewController(),
+                                                                                       className: TransformableSheetViewController.identifier,
+                                                                                       title: "확장 바텀 시트3 - transform")
+    ])
 ]
