@@ -11,7 +11,7 @@ class FinalExpandableSheetViewController: UIViewController {
     private var currentTransform: CGAffineTransform?
     private let maxCornerRadius: CGFloat = 16
     private let heightTopContentView: CGFloat = 162
-    private var isAnimating = false
+    private var panGestureRecognizer: UIPanGestureRecognizer?
     
     private let topContentView : UIView = {
         let view = UIView()
@@ -50,9 +50,12 @@ class FinalExpandableSheetViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sectionHeaderTopPadding = 0
-        //        tableView.bounces = false
+        tableView.bounces = false
         tableView.showsVerticalScrollIndicator = false
-        
+        panGestureRecognizer = UIPanGestureRecognizer(target: self,
+                                                          action: #selector(self.handlePanGesture(_:)))
+        panGestureRecognizer?.delegate = self
+        tableView.addGestureRecognizer(panGestureRecognizer!)
         return tableView
     }()
     
@@ -83,7 +86,6 @@ class FinalExpandableSheetViewController: UIViewController {
         
         topContentView.addSubview(collectionView)
         
-        //        mainContentVStackView.addArrangedSubview(headerView)
         mainContentVStackView.addArrangedSubview(tableView)
     }
     
@@ -105,7 +107,6 @@ class FinalExpandableSheetViewController: UIViewController {
     }
     
     private func animateToExpandedState() {
-        isAnimating = true
 
         UIView.animate(withDuration: 0.4,
                        delay: 0,
@@ -116,15 +117,10 @@ class FinalExpandableSheetViewController: UIViewController {
             self.mainContentVStackView.transform = CGAffineTransform(translationX: 0, y: self.heightTopContentView)
             self.mainContentVStackView.layer.cornerRadius = self.maxCornerRadius
             self.navigationController?.navigationBar.setAppearance(.white.withAlphaComponent(0))
-        }, completion: { _ in
-            self.isAnimating = false
-
-            
-        })
+        }, completion: nil)
     }
     
     private func animateToCollapsedState() {
-        isAnimating = true
         UIView.animate(withDuration: 0.4,
                        delay: 0,
                        usingSpringWithDamping: 1,
@@ -134,20 +130,51 @@ class FinalExpandableSheetViewController: UIViewController {
             self.mainContentVStackView.transform = .identity
             self.mainContentVStackView.layer.cornerRadius = 0
             self.navigationController?.navigationBar.setAppearance(.white.withAlphaComponent(1))
-        }, completion: { _ in
-            self.isAnimating = false
+        }, completion: nil)
+    }
+    
+    // MARK: - Action Methods
+    @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: view)
 
+        guard tableView.contentOffset.y <= 0 else {
+            recognizer.setTranslation(CGPoint.zero, in: view)
+            currentTransform = mainContentVStackView.transform
+            return
+        }
+        
+        switch recognizer.state {
+        case .began:
+            currentTransform = mainContentVStackView.transform
+        case .changed:
+            let potentialTransform = currentTransform!.translatedBy(x: 0, y: translation.y)
+            let limitedY = max(0, min(potentialTransform.ty, heightTopContentView))
             
-        })
+            let cornerRadius = (limitedY / heightTopContentView) * maxCornerRadius
+            let alpha = 1 - (limitedY / heightTopContentView)
+            
+            mainContentVStackView.transform = CGAffineTransform(translationX: 0, y: limitedY)
+            mainContentVStackView.layer.cornerRadius = cornerRadius
+            self.navigationController?.navigationBar.setAppearance(.white.withAlphaComponent(alpha))
+            
+        case .ended, .cancelled:
+            if heightTopContentView / 2 <= mainContentVStackView.transform.ty {
+                animateToExpandedState()
+            } else {
+                animateToCollapsedState()
+            }
+        default:
+            break
+        }
     }
 }
-
 
 extension FinalExpandableSheetViewController:
     UITableViewDataSource,
     UITableViewDelegate,
     UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout
+    UICollectionViewDelegateFlowLayout,
+    UIGestureRecognizerDelegate
 {
     // MARK: - UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -172,50 +199,8 @@ extension FinalExpandableSheetViewController:
     
     // MARK: - UIScrollViewDelegate Methods
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y, mainContentVStackView.transform.ty)
-        guard scrollView == tableView, !isAnimating else { return }
-        
-        // 현재 변환된 y 값을 가져옴
-//        scrollView.contentOffset.y = mainContentVStackView.transform.ty
-        
-        // 스크롤 오프셋에 따른 변환 값 계산
-        let offsetY = scrollView.contentOffset.y
-        let limitedY = heightTopContentView - max(0, min(offsetY, heightTopContentView))
-        print("limitedY", limitedY)
-        // 코너 반경과 알파 값 계산
-        let cornerRadius = (limitedY / heightTopContentView) * maxCornerRadius
-        let alpha = 1 - (limitedY / heightTopContentView)
-        
-        // 메인 콘텐츠 뷰의 이동 및 코너 반경 설정
-        mainContentVStackView.transform = CGAffineTransform(translationX: 0, y: limitedY)
-        mainContentVStackView.layer.cornerRadius = cornerRadius
-        self.navigationController?.navigationBar.setAppearance(.white.withAlphaComponent(alpha))
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        guard scrollView == tableView else { return }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard scrollView == tableView else { return }
-        if !decelerate {
-            if scrollView.contentOffset.y > 50 {
-                animateToCollapsedState()
-            } else {
-                guard mainContentVStackView.transform.ty != 0 || tableView.contentOffset.y < 0 else { return }
-                animateToExpandedState()
-            }
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard scrollView == tableView else { return }
-        if scrollView.contentOffset.y > 50 {
-            animateToCollapsedState()
-        } else {
-            guard mainContentVStackView.transform.ty != 0 || tableView.contentOffset.y < 0 else { return }
-            animateToExpandedState()
-        }
+        guard mainContentVStackView.transform.ty > 0 else { return }
+        scrollView.contentOffset.y = 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -233,5 +218,11 @@ extension FinalExpandableSheetViewController:
         
         return CGSize(width: 60, height: collectionView.frame.size.height - 20)
         
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate Methods
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // 특정 제스처 인식기와 동시에 인식되도록 허용
+        return true
     }
 }
