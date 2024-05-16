@@ -41,5 +41,9 @@ let sampleGroups: Array<SampleGroup> = [
                                            Sample(controller: FinalExpandableSheetViewController(nibName: FinalExpandableSheetViewController.identifier, bundle: nil),
                                                                                        className: FinalExpandableSheetViewController.identifier,
                                                                                        title: "확장 바텀 시트 최종 - transform")
-    ])
+    ]),
+    SampleGroup(title: "Side Menu", samples: [
+        Sample(controller: SideMenuMainViewController(),
+               className: SideMenuMainViewController.identifier,
+               title: "사이드 메뉴")])
 ]
