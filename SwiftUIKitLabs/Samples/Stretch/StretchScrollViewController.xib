@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,14 +20,14 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zS-PB-vWB">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zS-PB-vWB">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYv-oM-Bcv">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="280"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwZ-g3-Kkr">
-                                    <rect key="frame" x="0.0" y="15" width="393" height="265"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="nwZ-g3-Kkr">
+                                    <rect key="frame" x="0.0" y="59" width="393" height="221"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.81568627449999997" green="0.0039215686269999999" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,10 +62,13 @@
                 <constraint firstItem="3zS-PB-vWB" firstAttribute="top" secondItem="Imc-5j-AGF" secondAttribute="top" id="FUf-zJ-1V4"/>
                 <constraint firstItem="3zS-PB-vWB" firstAttribute="trailing" secondItem="mMw-79-qif" secondAttribute="trailing" id="Kc2-Gh-otT"/>
                 <constraint firstItem="bf9-gM-WdK" firstAttribute="width" secondItem="Imc-5j-AGF" secondAttribute="width" id="YfG-Yb-DXa"/>
-                <constraint firstItem="mMw-79-qif" firstAttribute="top" secondItem="nwZ-g3-Kkr" secondAttribute="top" priority="900" constant="44" id="bix-ld-bTw"/>
+                <constraint firstItem="mMw-79-qif" firstAttribute="top" secondItem="nwZ-g3-Kkr" secondAttribute="top" priority="900" id="bix-ld-bTw"/>
                 <constraint firstItem="3zS-PB-vWB" firstAttribute="leading" secondItem="mMw-79-qif" secondAttribute="leading" id="ime-vU-6X4"/>
             </constraints>
             <point key="canvasLocation" x="-166" y="-651"/>
         </view>
     </objects>
+    <resources>
+        <image name="image" width="2144" height="1206"/>
+    </resources>
 </document>
