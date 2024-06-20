@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WKWebViewViewController" customModule="SwiftUIKitLabs" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="R2P-3k-brA" id="ZX0-tr-iy7"/>
+                <outlet property="closeButton" destination="SX7-dT-YFG" id="f2X-0s-aQY"/>
+                <outlet property="forwardButton" destination="QqJ-CK-FvT" id="GfT-N2-Vqm"/>
+                <outlet property="moreButton" destination="nBY-7U-XI6" id="DS0-c9-gVQ"/>
+                <outlet property="progressView" destination="GCT-Wq-o0d" id="q0O-r9-knz"/>
+                <outlet property="refreshButton" destination="bcr-Fv-u8L" id="8WK-LK-MyN"/>
+                <outlet property="shareButton" destination="fUm-by-dqE" id="rvy-af-NFb"/>
+                <outlet property="urlLabel" destination="WkL-fz-gcc" id="2Dr-rr-giA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="7n5-0m-OPO" id="Ikx-jf-6Y4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cK7-Ih-R1K">
+                    <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xVf-zB-mLv">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SX7-dT-YFG">
+                                    <rect key="frame" x="0.0" y="0.0" width="46.333333333333336" height="52"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                    <connections>
+                                        <action selector="touchClose:" destination="-1" eventType="touchUpInside" id="h3M-Ly-AGb"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkL-fz-gcc">
+                                    <rect key="frame" x="175.33333333333334" y="0.0" width="41.333333333333343" height="52"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBY-7U-XI6">
+                                    <rect key="frame" x="345.33333333333331" y="0.0" width="47.666666666666686" height="52"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="ellipsis" catalog="system"/>
+                                    <connections>
+                                        <action selector="touchMore:" destination="-1" eventType="touchUpInside" id="59v-yd-fSw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GCT-Wq-o0d">
+                            <rect key="frame" x="0.0" y="52" width="393" height="4"/>
+                            <color key="progressTintColor" systemColor="systemPurpleColor"/>
+                        </progressView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="xVf-zB-mLv" firstAttribute="top" secondItem="cK7-Ih-R1K" secondAttribute="top" id="EV3-eo-2vX"/>
+                        <constraint firstItem="xVf-zB-mLv" firstAttribute="leading" secondItem="cK7-Ih-R1K" secondAttribute="leading" id="KiZ-0q-fcF"/>
+                        <constraint firstAttribute="trailing" secondItem="xVf-zB-mLv" secondAttribute="trailing" id="Ydg-KS-KuL"/>
+                        <constraint firstAttribute="trailing" secondItem="GCT-Wq-o0d" secondAttribute="trailing" id="e7p-8t-cfj"/>
+                        <constraint firstItem="GCT-Wq-o0d" firstAttribute="top" secondItem="xVf-zB-mLv" secondAttribute="bottom" id="iYf-yY-nYu"/>
+                        <constraint firstItem="GCT-Wq-o0d" firstAttribute="leading" secondItem="cK7-Ih-R1K" secondAttribute="leading" id="nGL-ql-4qU"/>
+                        <constraint firstAttribute="bottom" secondItem="GCT-Wq-o0d" secondAttribute="bottom" id="pkF-8y-t2l"/>
+                        <constraint firstAttribute="height" constant="56" id="qER-Vy-FH3"/>
+                    </constraints>
+                </view>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7n5-0m-OPO">
+                    <rect key="frame" x="0.0" y="115" width="393" height="654"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiC-Fa-sMn">
+                    <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                    <items>
+                        <barButtonItem title="Item" image="arrow.left" catalog="system" id="R2P-3k-brA">
+                            <connections>
+                                <action selector="touchBack:" destination="-1" id="JTa-UJ-p90"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="gJe-z1-q8Y"/>
+                        <barButtonItem title="Item" image="arrow.right" catalog="system" id="QqJ-CK-FvT">
+                            <connections>
+                                <action selector="touchForward:" destination="-1" id="C8n-Y5-Orh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="vZr-Uk-z6V"/>
+                        <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="fUm-by-dqE">
+                            <connections>
+                                <action selector="touchShare:" destination="-1" id="7CP-Oo-KMq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="FiR-L0-E4F"/>
+                        <barButtonItem title="Item" image="arrow.clockwise" catalog="system" id="bcr-Fv-u8L">
+                            <connections>
+                                <action selector="touchRefresh:" destination="-1" id="34M-zQ-PNG"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <toolbarAppearance key="standardAppearance"/>
+                </toolbar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="7n5-0m-OPO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1C2-a9-5eI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cK7-Ih-R1K" secondAttribute="trailing" id="AEf-Xg-wUE"/>
+                <constraint firstItem="7n5-0m-OPO" firstAttribute="top" secondItem="cK7-Ih-R1K" secondAttribute="bottom" id="B87-NY-KXX"/>
+                <constraint firstItem="tiC-Fa-sMn" firstAttribute="top" secondItem="7n5-0m-OPO" secondAttribute="bottom" id="RdU-62-En8"/>
+                <constraint firstItem="cK7-Ih-R1K" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="e6Q-N5-26n"/>
+                <constraint firstItem="tiC-Fa-sMn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gLg-4Y-CxI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tiC-Fa-sMn" secondAttribute="bottom" id="hCz-F1-9Jk"/>
+                <constraint firstItem="cK7-Ih-R1K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="j8Q-3V-FFh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7n5-0m-OPO" secondAttribute="trailing" id="jbA-Se-eEC"/>
+                <constraint firstAttribute="trailing" secondItem="tiC-Fa-sMn" secondAttribute="trailing" id="r0S-Kr-heE"/>
+            </constraints>
+            <point key="canvasLocation" x="24" y="-12"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
+        <image name="arrow.left" catalog="system" width="128" height="95"/>
+        <image name="arrow.right" catalog="system" width="128" height="95"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
