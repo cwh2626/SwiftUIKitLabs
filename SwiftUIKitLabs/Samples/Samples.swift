@@ -43,7 +43,10 @@ let sampleGroups: Array<SampleGroup> = [
                                                                                        title: "확장 바텀 시트4 - tableView"),
                                            Sample(controller: FinalExpandableSheetViewController(nibName: FinalExpandableSheetViewController.identifier, bundle: nil),
                                                                                        className: FinalExpandableSheetViewController.identifier,
-                                                                                       title: "확장 바텀 시트 최종 - transform")
+                                                                                       title: "확장 바텀 시트 최종 - transform"),
+                                           Sample(controller: TossTableExpandableSheetViewController(),
+                                                                                       className: TossTableExpandableSheetViewController.identifier,
+                                                                                       title: "토스 소비 바텀 시트 - transform")
     ]),
     SampleGroup(title: "Side Menu", samples: [
         Sample(controller: SideMenuMainViewController(),
