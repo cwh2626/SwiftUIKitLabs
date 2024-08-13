@@ -49,7 +49,22 @@ let sampleGroups: Array<SampleGroup> = [
                                                                                        title: "토스 소비 바텀 시트 - transform")
     ]),
     SampleGroup(title: "Side Menu", samples: [
-        Sample(controller: SideMenuMainViewController(),
-               className: SideMenuMainViewController.identifier,
-               title: "사이드 메뉴")])
+        Sample(
+            controller: SideMenuMainViewController(),
+            className: SideMenuMainViewController.identifier,
+            title: "사이드 메뉴"
+        )
+    ]),
+    SampleGroup(title: "Web", samples: [
+        Sample(
+            controller: SafariInAppBrowserViewController(url: URL(string: "https://www.naver.com")!, configuration: .init()),
+            className: SafariInAppBrowserViewController.identifier,
+            title: "사파리 인앱브라우저"
+        ),
+        Sample(
+            controller: WKWebViewViewController(nibName: WKWebViewViewController.identifier, bundle: nil),
+            className: WKWebViewViewController.identifier,
+            title: "WKWebView 인앱브라우저"
+        )
+    ])
 ]
