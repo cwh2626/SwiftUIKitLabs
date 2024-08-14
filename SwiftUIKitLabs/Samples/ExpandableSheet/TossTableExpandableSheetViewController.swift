@@ -72,8 +72,13 @@ class TossTableExpandableSheetViewController: UIViewController {
     private lazy var headerHeight = trunc(headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height)
     private lazy var cellHeight = trunc(BottomSheetTableViewCell().systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height)
     private var tableHeightConst: Constraint?
+    private var panGestureRecognizer: UIPanGestureRecognizer?
+    private var isScrollEnabled = false
+    private var isDragging = false
     private var tableBottomContentInset = 40.0
-    private var dataSourceCount: Int = 11
+    private var dataSourceCount: Int = 9
+    private var lastContentOffset: CGFloat = 0
+    
     private var initHeight: CGFloat {
         min(cellHeight * CGFloat(dataSourceCount) + tableBottomContentInset, (cellHeight * 8) + tableBottomContentInset)
     }
@@ -82,12 +87,6 @@ class TossTableExpandableSheetViewController: UIViewController {
         min(cellHeight * CGFloat(dataSourceCount) + tableBottomContentInset, heightExcludingSafeArea)
     }
         
-    private var panGestureRecognizer: UIPanGestureRecognizer?
-    private var isCollapsed = false
-    private var isScrollEnabled = false
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -106,19 +105,17 @@ class TossTableExpandableSheetViewController: UIViewController {
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
-//        print(initHeight)
         tableHeightConst?.update(offset: initHeight)
         initialTransformSetup()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animateToIdentityState()
         if isScrollEnabled {
-            let indexPath = IndexPath(row: 5, section: 0)
-            // 이거 때문에 스크롤쪽에서 contentOffset의 초기값이 양수여서 바로 펼처지고있네
+            let indexPath = IndexPath(row: 3, section: 0)
             tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
         }
-        
     }
     
     private func setupStyles() {
@@ -175,17 +172,13 @@ class TossTableExpandableSheetViewController: UIViewController {
         let height = tableView.frame.height
     
         switch recognizer.state {
-//        case .began:
-////            tableView.isScrollEnabled = false
         case .changed:
             tableHeightConst?.update(offset: min(height + -translation.y, maxHeight))
 
             recognizer.setTranslation(.zero, in: view)
         case .ended, .cancelled:
-//            tableView.isScrollEnabled = true
             if velocity.y < 0 {
                 animateToExpandedState()
-
             } else {
                 animateToCloseState()
             }
@@ -199,7 +192,6 @@ class TossTableExpandableSheetViewController: UIViewController {
     }
     
     private func animateToIdentityState() {
-        isCollapsed = false
         UIView.animate(withDuration: 0.25, animations: {
             self.view.backgroundColor = .black.withAlphaComponent(0.6)
             self.mainContentVStackView.transform = .identity
@@ -207,8 +199,6 @@ class TossTableExpandableSheetViewController: UIViewController {
     }
     
     private func animateToExpandedState() {
-//        guard isScrollEnabled else { return }
-        isCollapsed = true
         self.tableHeightConst?.update(offset: maxHeight)
         UIView.animate(withDuration: 0.4,
                        delay: 0,
@@ -216,8 +206,6 @@ class TossTableExpandableSheetViewController: UIViewController {
                        initialSpringVelocity: 0.2,
                        options: [.curveEaseIn],
                        animations: {
-//            print(self.heightExcludingSafeArea)
-            
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
@@ -249,17 +237,26 @@ extension TossTableExpandableSheetViewController:
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BottomSheetTableViewCell", for: indexPath) as? BottomSheetTableViewCell else {
             return UITableViewCell()
         }
-        
 
         return cell
     }
     
     // MARK: - UIScrollViewDelegate
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print(#function)
+        lastContentOffset = scrollView.contentOffset.y
+        isDragging = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print(#function)
+        isDragging = false
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == tableView else { return }
-        print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y > 10 && !isCollapsed {
+        if lastContentOffset < scrollView.contentOffset.y && isDragging {
             animateToExpandedState()
         }
     }
@@ -269,7 +266,6 @@ extension TossTableExpandableSheetViewController:
         guard touch.view?.isDescendant(of: self.mainContentVStackView) == false else { return false }
         return true
     }
-    
 }
 
 class BottomSheetTableViewCell: UITableViewCell {
